@@ -11,7 +11,7 @@ mongoose
 
 //@ define Schema
 const shorterURLSchema = new mongoose.Schema({
-  "shorterURl": String,
+  "shorterURL": String,
   "originURL": String
 })
 

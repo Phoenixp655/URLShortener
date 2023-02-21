@@ -7,11 +7,11 @@ router.get('/:id', (req, res) => {
 })
 
 //@ process post url submit from form
-router.post('/:id', (req, res) => {
-  const param = req.params.id;
+router.post('/', (req, res) => {
+  const url = req.body.url;
 
-  /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig.test(param) 
-  ? create(req, res, param) 
+  /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig.test(url) 
+  ? create(req, res, url) 
     : res.json({error: 'invalid url'})
 })
 

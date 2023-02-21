@@ -1,17 +1,17 @@
 const express = require('express');
 const shorterURL = require('../model/shorterURLSchema');
-const {v4: uuidv4} = require('uuid');
+const shortid = require('shortid');
 
 
 const create = async (req, res, data) => {
   const createShortURl = await shorterURL.create({
-    "shorterURl": uuidv4(),
+    "shorterURL": shortid.generate(),
     "originURL": 'https://'+data
   })
 
   createShortURl.save((err, data) => {
     if(err) console.log(err);
-    console.log(data)
+    res.json({original_url: data.originURL, short_url: data.shorterURL})
   })
 }
 
