@@ -4,6 +4,7 @@ const app = express();
 app.use('/public',express.static(__dirname + '/public'))
 
 
+//@ shortURL api
 app.use('/api/shorturl', require('./routes/shorterURLRoute'))
 
 
