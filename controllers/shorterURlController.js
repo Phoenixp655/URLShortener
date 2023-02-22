@@ -6,7 +6,7 @@ const shortid = require('shortid');
 const create = async (req, res, data) => {
   const createShortURl = await shorterURL.create({
     "shorterURL": shortid.generate(),
-    "originURL": 'https://'+data
+    "originURL": data
   })
 
   createShortURl.save((err, data) => {
@@ -16,9 +16,8 @@ const create = async (req, res, data) => {
 }
 
 const checkShortURL = async (req, res, data) => {
-  const check = await shorterURL.findOne({shorterURl: data});
+  const check = await shorterURL.findOne({shorterURL: data});
   if(check) return res.redirect(check['originURL']);
-  
 }
 
 

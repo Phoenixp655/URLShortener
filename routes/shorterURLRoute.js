@@ -8,7 +8,7 @@ router.get('/:id', (req, res) => {
 
 //@ process post url submit from form
 router.post('/', (req, res) => {
-  const url = req.body.url;
+  const url = /https?:\/\//g.test(req.body.url) ? req.body.url : 'https://'+ req.body.url;
 
   /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig.test(url) 
   ? create(req, res, url) 
